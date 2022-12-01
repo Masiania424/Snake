@@ -1,0 +1,29 @@
+namespace JustProject
+{
+    class Program
+    {
+        class TruncatedCone
+        {
+            public double BottomRadius { get; set; }
+            public double TopRadius { get; set; }
+            public double HeightCone { get; set; }
+            public TruncatedCone() { BottomRadius = 0; TopRadius = 0; HeightCone = 0; }
+            public TruncatedCone(double bottomRadius, double topRadius, double heightCone)
+            {
+                BottomRadius = bottomRadius;
+                TopRadius = topRadius;
+                HeightCone = heightCone;
+            }
+            public static double VolumeCalculation(TruncatedCone cone)
+            {
+                return (Math.PI / 3) * cone.HeightCone * (Math.Pow(cone.BottomRadius, 2) + cone.TopRadius * cone.BottomRadius + Math.Pow(cone.TopRadius, 2));
+            }
+            ~TruncatedCone() => Console.WriteLine("Cone has deleted!");
+        }
+        static void Main(string[] args)
+        {
+            TruncatedCone cone = new TruncatedCone(bottomRadius: 5, topRadius: 3, heightCone: 3);
+            Console.WriteLine(TruncatedCone.VolumeCalculation(cone));
+        }
+    }
+}
